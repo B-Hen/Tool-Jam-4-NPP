@@ -1,0 +1,17 @@
+h1{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#output-holder{
+    background-color: red;
+    width: 50vw;
+    height: 50vh;
+    margin: auto;
+    text-align: center;
+}
+
+#fileOutput{
+    margin: auto;
+}
