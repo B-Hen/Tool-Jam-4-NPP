@@ -4,6 +4,13 @@ h1{
     text-align: center;
 }
 
+#input-holder{
+    background-color: yellow;
+    width: 50vw;
+    height: 5vh;
+    margin: auto;
+}
+
 #output-holder{
     background-color: red;
     width: 50vw;
@@ -14,4 +21,20 @@ h1{
 
 #fileOutput{
     margin: auto;
+}
+
+#coordinate-holder, #normalize-coordinate-holder{
+    background-color: green;
+    width: 50vw;
+    height: auto;
+    margin: auto;
+    color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-around;
+}
+
+h2{
+    text-align: center;
 }

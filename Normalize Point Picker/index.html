@@ -12,11 +12,27 @@
     <h1>Normalize Point Picker</h1>
     <br>
     <div id="input-holder">
-        </div><input type="file" accept="image/jpeg, image/png, image/jpg" id="fileInput">
+        <input type="file" accept="image/jpeg, image/png, image/jpg" id="fileInput">
+        <select name="origins" id="origins">
+            <option value="top-left" selected>Top-Left</option>
+            <option value="center">Center</option>
+        </select>
     </div>
     <br>
     <div id="output-holder">
         <img id="fileOutput" />
+    </div>
+    <br>
+    <h2>Coordinate</h2>
+    <div id="coordinate-holder">
+        <p id="x-position"></p>
+        <p id="y-position"></p>
+    </div>
+    <br>
+    <h2>Normalized Coordinate</h2>
+    <div id="normalize-coordinate-holder">
+        <p id="x-normalizedPosition"></p>
+        <p id="y-normalizedPosition"></p>
     </div>
 </body>
 </html>
