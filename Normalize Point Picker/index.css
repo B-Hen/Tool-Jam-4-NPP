@@ -38,3 +38,11 @@ h1{
 h2{
     text-align: center;
 }
+
+#button-holder{
+    margin:auto;
+    text-align: center;
+    background-color: blue;
+    width: 50vw;
+    height: 3vh;
+}
