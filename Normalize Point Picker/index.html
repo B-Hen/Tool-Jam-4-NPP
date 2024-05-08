@@ -11,32 +11,54 @@
 <body>
     <h1>Normalize Point Picker</h1>
     <br>
-    <div id="input-holder">
-        <input type="file" accept="image/jpeg, image/png, image/jpg" id="fileInput">
-        <select name="origins" id="origins">
-            <option value="top-left" selected>Top-Left</option>
-            <option value="center">Center</option>
-        </select>
-    </div>
-    <br>
-    <div id="output-holder">
-        <img id="fileOutput" />
-    </div>
-    <br>
-    <h2>Coordinate</h2>
-    <div id="coordinate-holder">
-        <p id="x-position"></p>
-        <p id="y-position"></p>
-    </div>
-    <br>
-    <h2>Normalized Coordinate</h2>
-    <div id="normalize-coordinate-holder">
-        <p id="x-normalizedPosition"></p>
-        <p id="y-normalizedPosition"></p>
-    </div>
-    <br>
-    <div id="button-holder">
-        <button id="points">Save Points to JSON file</button>
+    <div id="container"></div>
+        <div id="input-holder">
+            <input type="file" accept="image/jpeg, image/png, image/jpg" id="fileInput">
+            <select name="origins" id="origins">
+                <option value="top-left" selected>Top-Left</option>
+                <option value="center">Center</option>
+            </select>
+        </div>
+        <br>
+        <div id="output-holder">
+            <img id="fileOutput" />
+        </div>
+        <br>
+        <h2>Coordinate</h2>
+        <div id="coordinate-holder">
+            <p id="x-position"></p>
+            <p id="y-position"></p>
+        </div>
+        <br>
+        <h2>Normalized Coordinate</h2>
+        <div id="normalize-coordinate-holder">
+            <p id="x-normalizedPosition"></p>
+            <p id="y-normalizedPosition"></p>
+        </div>
+        <br>
+        <div id="button-holder">
+            <button id="top-left-points">Save Points (Origins Top-Left) to JSON file</button>
+            <button id="center-points">Save Points (Origins Center) to JSON file</button>
+        </div>
+        <h2>Display points here</h2>
+        <table id="Top-Left-Origins">
+            <tr>
+                <th>X-Position</th>
+                <th>Y-position</th>
+                <th>Normalized X-Position</th>
+                <th>Normalized Y-Position</th>
+                <th></th>
+            </tr>
+        </table>
+        <table id="Center-Origins">
+            <tr>
+                <th>X-Position</th>
+                <th>Y-position</th>
+                <th>Normalized X-Position</th>
+                <th>Normalized Y-Position</th>
+                <th></th>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
