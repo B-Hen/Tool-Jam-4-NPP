@@ -8,4 +8,4 @@ Example Use: Getting normalized position of hotspot.
 ![Image Upload](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPickerImage.png))
 ![Points](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPickerPoints.png))
 
-[itch page](https://hen-sama.itch.io/normalize-point-picker)
+[itch.io page](https://hen-sama.itch.io/normalize-point-picker)
