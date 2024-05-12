@@ -4,8 +4,8 @@ Upload an image and click anywhere on it  to get the normalized point displayed 
 
 Example Use: Getting normalized position of hotspot. 
 
-![Alt text](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPicker.png) "Home Page")
-![Alt text](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPickerImage.png) "Image Upload")
-![Alt text](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPickerPoints.png) "Points")
+![Home Page](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPicker.png))
+![Image Upload](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPickerImage.png))
+![Points](https://github.com/B-Hen/Tool-Jam-4-NPP/blob/main/Normalize%20Point%20Picker/Pictures/NormalizePointPickerPoints.png))
 
 [itch page](https://hen-sama.itch.io/normalize-point-picker)
