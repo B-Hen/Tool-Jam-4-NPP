@@ -126,8 +126,9 @@ h2{
 
 table button{
     width: 1.5vw;
-    padding: 0.3em; /* Add padding to the button */
-    margin: 0 0.3em; /* Compensate for padding with negative margin */
+    padding: -0.3em;
+    margin: 0 0.3em;
+    text-align: center;
 }
 
 table{
