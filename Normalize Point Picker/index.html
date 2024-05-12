@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link  rel="stylesheet" type="text/css" href="index.css">
     <script type="text/javascript" src="index.js"></script>
     <title>Normalize Point Picker</title>
@@ -18,47 +21,35 @@
                 <option value="top-left" selected>Top-Left</option>
                 <option value="center">Center</option>
             </select>
+            <button id="save-points">Save Points to JSON file</button>
+            <button id="reset">Reset Points</button>
         </div>
         <br>
         <div id="output-holder">
             <img id="fileOutput" />
         </div>
         <br>
-        <h2>Coordinate</h2>
-        <div id="coordinate-holder">
-            <p id="x-position"></p>
-            <p id="y-position"></p>
+        <h2>Points</h2>
+        <div id="table-holder">
+            <table id="Top-Left-Origins">
+                <tr>
+                    <th>X-Position</th>
+                    <th>Y-Position</th>
+                    <th>Normalized X-Position</th>
+                    <th>Normalized Y-Position</th>
+                    <th></th>
+                </tr>
+            </table>
+            <table id="Center-Origins">
+                <tr>
+                    <th>X-Position</th>
+                    <th>Y-Position</th>
+                    <th>Normalized X-Position</th>
+                    <th>Normalized Y-Position</th>
+                    <th></th>
+                </tr>
+            </table>
         </div>
-        <br>
-        <h2>Normalized Coordinate</h2>
-        <div id="normalize-coordinate-holder">
-            <p id="x-normalizedPosition"></p>
-            <p id="y-normalizedPosition"></p>
-        </div>
-        <br>
-        <div id="button-holder">
-            <button id="top-left-points">Save Points (Origins Top-Left) to JSON file</button>
-            <button id="center-points">Save Points (Origins Center) to JSON file</button>
-        </div>
-        <h2>Display points here</h2>
-        <table id="Top-Left-Origins">
-            <tr>
-                <th>X-Position</th>
-                <th>Y-position</th>
-                <th>Normalized X-Position</th>
-                <th>Normalized Y-Position</th>
-                <th></th>
-            </tr>
-        </table>
-        <table id="Center-Origins">
-            <tr>
-                <th>X-Position</th>
-                <th>Y-position</th>
-                <th>Normalized X-Position</th>
-                <th>Normalized Y-Position</th>
-                <th></th>
-            </tr>
-        </table>
     </div>
 </body>
 </html>

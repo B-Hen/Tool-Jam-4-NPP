@@ -1,3 +1,83 @@
+body{
+    font-family: "Fjalla One", sans-serif;
+    letter-spacing: .1rem;
+    background-color: #F9EAE1;
+    color: #7D4F50;
+}
+
+button, input, select, input::file-selector-button, options{
+    font-family: "Fjalla One", sans-serif;
+    letter-spacing: .05rem;
+}
+
+input{
+    font-size: 1.3em;
+    width: 8vw;
+}
+
+input::file-selector-button{
+    width: 6.5vw;
+    height: 3vh;
+    border: 2px solid #7D4F50;
+    border-radius: 0.3vw;
+    background-color: #CC8B86;
+    color: #F9EAE1;
+}
+
+input::file-selector-button:hover{
+    color:#CC8B86;
+    background-color:#F9EAE1;
+}
+
+button:active{
+    background-color: #7D4F50;
+    color: #F9EAE1;
+}
+
+button{
+    font-size: 1.3em;
+    width: 5vw;
+    height: 3vh;
+    border: 2px solid #7D4F50;
+    border-radius: 0.3vw;
+    background-color: #CC8B86;
+    color: #F9EAE1;
+    overflow: hidden;
+}
+
+button:hover{
+    color:#CC8B86;
+    background-color:#F9EAE1;
+}
+
+button:active{
+    background-color: #7D4F50;
+    color: #F9EAE1;
+}
+
+select{
+    width: 10vw;
+    height: 3vh;
+    font-size: 1.3rem;
+    background-color: #CC8B86;
+    color: #F9EAE1;
+    border-radius: 0.3vw;
+    border: 2px solid #7D4F50;
+}
+
+option{
+    border: 2px solid #7D4F50;
+}
+
+#save-points{
+    width: 10vw;
+}
+
+#reset
+{
+    width: 7vw;
+}
+
 #container{
     display: flex;
     justify-content: space-evenly;
@@ -10,14 +90,17 @@ h1{
 }
 
 #input-holder{
-    background-color: yellow;
     width: 50vw;
     height: 5vh;
+    padding: 0 0.3vw 0 0.3vw;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
     margin: auto;
+    border: 2px dashed rgba(125, 79, 80, 0.5) ;
 }
 
 #output-holder{
-    background-color: red;
     width: 50vw;
     height: 50vh;
     margin: auto;
@@ -26,44 +109,64 @@ h1{
 
 #fileOutput{
     margin: auto;
-}
-
-#coordinate-holder, #normalize-coordinate-holder{
-    background-color: green;
-    width: 50vw;
-    height: auto;
-    margin: auto;
-    color: yellow;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content:space-around;
+    text-align: center;
 }
 
 h2{
     text-align: center;
 }
 
-#button-holder{
-    margin:auto;
-    text-align: center;
-    background-color: blue;
+#table-holder
+{
     width: 50vw;
-    height: 3vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    margin: auto;
+    text-align: center;
+    justify-items: end;
+}
+
+table button{
+    width: 1.5vw;
+    padding: 0.3em; /* Add padding to the button */
+    margin: 0 0.3em; /* Compensate for padding with negative margin */
 }
 
 table{
-    background-color: gray;
-    width: 50vw;
-    margin:auto;
+    margin: auto;
     table-layout: fixed;
 }
 
+
 th, td {
-    border: 1px solid black;
+    border: 2px solid #7D4F50;
     padding: 0.5em;
-    width: 25%;
+    width: 20vw;
+    height: 3.5vh;
+    box-sizing: border-box;
 }
+
+th{
+    letter-spacing:.15rem;
+    height: 5vh;
+}
+
+tr:nth-child(odd)
+{
+    background-color: #CC8B86;
+    color: #F9EAE1;
+}
+
+tr td:nth-child(5), th:nth-child(5){
+    border-color: #F9EAE1;
+    border-style:hidden;
+    border: hidden;
+    background-color:#F9EAE1;
+    color:#F9EAE1;
+    min-width: 0;
+    max-width: 0;
+    width: 0;
+    padding: 0;
+}
+
+
+
+

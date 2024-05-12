@@ -1,22 +1,16 @@
 window.onload = function(){
     let input = document.querySelector("#fileInput");
     let output = document.querySelector("#fileOutput");
-    let outputHolder = document.querySelector("#output-holder")
+    let outputHolder = document.querySelector("#output-holder");
 
     const orignalWidth = outputHolder.getBoundingClientRect().width;
     const orignalHeight = outputHolder.getBoundingClientRect().height;
 
-    let xPosition = document.querySelector("#x-position");
-    let yPosition = document.querySelector("#y-position");
-
-    let xNormalizedPosition = document.querySelector("#x-normalizedPosition");
-    let yNormalizedPosition = document.querySelector("#y-normalizedPosition");
-
     let dropDown = document.querySelector("#origins");
     let  xClick, yClick, rect;
 
-    let topLeftPointsBtn = document.querySelector("#top-left-points");
-    let centerPointBtn = document.querySelector("#center-points")
+    let savePointsBtn = document.querySelector("#save-points");
+    let resetBtn = document.querySelector("#reset");
 
     let topLeftTable = document.querySelector("#Top-Left-Origins");
     let centerTable = document.querySelector("#Center-Origins");
@@ -27,6 +21,7 @@ window.onload = function(){
     let centerPoints = [];
 
     input.addEventListener("change", function(e){
+        ResetPoints();
         output.src = URL.createObjectURL(e.target.files[0]);
 
         output.onload = function()
@@ -46,6 +41,7 @@ window.onload = function(){
 
            output.style.width = newWidth + "px";
            output.style.height = newHeight + "px";
+           output.style.border = "2px solid #7D4F50"
 
            outputHolder.style.height = newHeight + "px";
         }
@@ -68,17 +64,34 @@ window.onload = function(){
         }
     })
 
-    topLeftPointsBtn.addEventListener("click", function() {
-        DownloadPoints(topLeftPoints, "topLeftOriginsPoints.json");
+    savePointsBtn.addEventListener("click", function() {
+
+        if(dropDown.value == "top-left"){
+            DownloadPoints(topLeftPoints, "topLeftOriginsPoints.json");
+        }
+        else if(dropDown.value == "center"){
+            DownloadPoints(centerPoints, "centerOriginsPoints.json");
+        }
+
     });
     
-    centerPointBtn.addEventListener("click", function() {
-        DownloadPoints(centerPoints, "centerOriginsPoints.json");
+    resetBtn.addEventListener("click", function() {
+        ResetPoints();
     });
+
+    function ResetPoints()
+    {
+        topLeftPoints = [];
+        centerPoints = [];
+
+        for(let i = topLeftTable.rows.length - 1; i > 0; i--){
+            topLeftTable.deleteRow(i);
+            centerTable.deleteRow(i);
+        }
+    }
 
     function DownloadPoints(pointList, name)
     {
-        console.log("point button clicked");
         points = JSON.stringify(pointList);
         let file = new File([points], name, {
             type: "text/plain",
@@ -104,21 +117,21 @@ window.onload = function(){
     {
         if(dropDown.value == "top-left")
         {
-            SetCoordinateUsingTopLeftOrigins(x, y, rect, true, value);
-            SetCoordinateUsingCenterOrigins(x, y, rect, false, value);
+            SetCoordinateUsingTopLeftOrigins(x, y, rect, value);
+            SetCoordinateUsingCenterOrigins(x, y, rect, value);
             topLeftTable.style.display = "block";
             centerTable.style.display = "none";
         }
         else if(dropDown.value == "center")
         {
-            SetCoordinateUsingCenterOrigins(x, y, rect, true, value);
-            SetCoordinateUsingTopLeftOrigins(x, y, rect, false, value);
+            SetCoordinateUsingCenterOrigins(x, y, rect, value);
+            SetCoordinateUsingTopLeftOrigins(x, y, rect, value);
             topLeftTable.style.display = "none";
             centerTable.style.display = "block";
         }
     }
 
-    function SetCoordinateUsingTopLeftOrigins(x,y, rect, value, changeValue){
+    function SetCoordinateUsingTopLeftOrigins(x,y, rect, changeValue){
         let xPos = (x - rect.left);
         let yPos = (y - rect.top);
 
@@ -133,18 +146,13 @@ window.onload = function(){
         let xNormPos = GetRoundedNumber((x - rect.left) / rect.width);
         let yNormPos = GetRoundedNumber((y - rect.top) / rect.height);
 
-        if(value == true)
-        {
-            SetTextElements(xPos, yPos, xNormPos, yNormPos);
-        }
-
         if(changeValue == false) return;
 
         AddRowToTable(xPos,yPos,xNormPos,yNormPos,topLeftTable);
         topLeftPoints.push({x: xPos, y: yPos, xNormalized: xNormPos, yNormalized: yNormPos});
     }
 
-    function SetCoordinateUsingCenterOrigins(x, y, rect, value, changeValue)
+    function SetCoordinateUsingCenterOrigins(x, y, rect, changeValue)
     {
         let xPos = (x - rect.left) - (rect.width/2);
         let yPos = -((y - rect.top) - (rect.height/2));
@@ -160,11 +168,6 @@ window.onload = function(){
         let xNormPos = GetRoundedNumber(((x - rect.left) - (rect.width/2)) / (rect.width/2));
         let yNormPos = -GetRoundedNumber(((y - rect.top) - (rect.height/2)) / (rect.height/2));
 
-        if(value == true)
-        {
-            SetTextElements(xPos, yPos, xNormPos, yNormPos);
-        }
-
         if(changeValue == false) return;
 
         AddRowToTable(xPos,yPos,xNormPos,yNormPos,centerTable);
@@ -176,17 +179,9 @@ window.onload = function(){
         return Math.round(((num) + Number.EPSILON) * 100) / 100;
     }
 
-    function SetTextElements(x, y, xNormalized, yNormalized){
-        xPosition.innerHTML = "X: " + x;
-        yPosition.innerHTML = "Y: " + y;
-        xNormalizedPosition.innerHTML = "X Normalized: " + xNormalized;
-        yNormalizedPosition.innerHTML = "Y Normalized: " + yNormalized;
-    }
-
     function AddRowToTable(x, y, normalizedX, normalizedY, table)
     {
-        console.log(table);
-        let row = table.insertRow(-1);
+        let row = table.insertRow(1);
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
@@ -199,19 +194,32 @@ window.onload = function(){
         cell4.innerHTML = normalizedY;
         
         let button = document.createElement("button");
-        button.textContent = "Remove From List";
+        button.textContent = "X";
     
         button.value = table.rows.length - 2;
     
-        // Add an event listener to the button
         button.addEventListener("click", function() {
-            // Remove the row from the table when the button is clicked
-            console.log(button.value)
-            let rowIndex = this.parentNode.parentNode.rowIndex; // Get the index of the row
-            table.deleteRow(rowIndex); // Remove the row from the table
+            let rowIndex = this.parentNode.parentNode.rowIndex;  
+            table.deleteRow(rowIndex);
+
+            if(table == topLeftTable){
+                centerTable.deleteRow(rowIndex);
+            }
+            else if(table == centerTable){
+                topLeftTable.deleteRow(rowIndex);
+            }
+
+            //remove point from array
+            if(topLeftPoints.length == 1 && centerPoints.length == 1){
+                topLeftPoints = [];
+                centerPoints = [];
+            }
+            else{
+                topLeftPoints.splice(topLeftTable.rows.length - rowIndex, 1);
+                centerPoints.splice(centerTable.rows.length - rowIndex, 1);
+            }
         });
 
-        // Append the button to cell5
         cell5.appendChild(button);
     }
 };
